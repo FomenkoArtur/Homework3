@@ -40,7 +40,6 @@ void task4() {
     cout << "Время выполнения сортировки: " << time2 << " миллисекунд" << endl;
 }
 
-// Сортировки для Задачи 5
 void bubbleSort(vector<int>& arr) {
     int n = arr.size();
     for (int i = 0; i < n - 1; ++i)

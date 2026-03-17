@@ -11,7 +11,6 @@ class PriorityQueue {
 public:
     void push(const T& value, int priority) {
         std::unique_lock<std::mutex> lk(mutex_);
-        // Используем отрицательный приоритет, чтобы большее число имело больший приоритет
         queue_.emplace(-priority, value);
         std::cout << "[PQ] thread " << std::this_thread::get_id()
                   << " push value with priority " << priority << "\n";
@@ -22,7 +21,7 @@ public:
     T pop() {
         std::unique_lock<std::mutex> lk(mutex_);
         cv_.wait(lk, [&]() { return !queue_.empty(); });
-        auto it = queue_.begin(); // минимальный (-priority) -> максимальный priority
+        auto it = queue_.begin();
         T value = it->second;
         queue_.erase(it);
         std::cout << "[PQ] thread " << std::this_thread::get_id()

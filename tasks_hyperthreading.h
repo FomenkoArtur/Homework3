@@ -41,7 +41,6 @@ public:
     HyperThreadingSimulator();
     void execute();
 
-    // ✅ ДОБАВЬТЕ ЭТОТ МЕТОД
     void addTask(int threadId, int v, int p, int d, int s);
 };
 
